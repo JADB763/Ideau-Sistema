@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\DocumentoEstagio;
+use App\Models\Estagio;
 use App\Models\Usuario;
 
 /**
@@ -21,5 +22,15 @@ class DocumentoEstagioPolicy
     public function view(Usuario $usuario, DocumentoEstagio $documento): bool
     {
         return DocumentoEstagio::whereKey($documento->getKey())->visivelPara($usuario)->exists();
+    }
+
+    /**
+     * O aluno gera documentos dos próprios estágios; a coordenação, de qualquer estágio.
+     * Uso: $usuario->can('create', [DocumentoEstagio::class, $estagio]).
+     */
+    public function create(Usuario $usuario, ?Estagio $estagio = null): bool
+    {
+        return $usuario->isCoordenacao()
+            || ($usuario->isAluno() && ($estagio === null || $estagio->id_aluno === $usuario->id));
     }
 }

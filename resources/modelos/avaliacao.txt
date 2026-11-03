@@ -1,0 +1,31 @@
+FICHA DE AVALIAÇÃO DE ESTÁGIO
+
+Aluno: {{aluno.nome}} | Matrícula: {{aluno.matricula}}
+Curso: {{aluno.curso}} | Instituição: {{aluno.instituicao}}
+Empresa: {{empresa.nome}} | CNPJ: {{empresa.cnpj}}
+Período cadastrado: {{estagio.inicio}} a {{estagio.fim}}
+Carga horária semanal: {{estagio.horas}} horas
+Orientador: {{orientador.nome}} | {{orientador.email}}
+Supervisor responsável: {{estagio.supervisor}}
+Contato do supervisor: {{estagio.supervisorEmail}}
+
+ATIVIDADES PREVISTAS
+{{estagio.atividades}}
+
+AVALIAÇÃO A SER PREENCHIDA PELO RESPONSÁVEL
+Pontualidade: ________________________
+Responsabilidade: ____________________
+Conhecimento técnico: ________________
+Trabalho em equipe: __________________
+Parecer final: _______________________
+
+OBSERVAÇÕES INFORMADAS NA REQUISIÇÃO
+{{observacoes}}
+
+A identificação é preenchida automaticamente. Notas, conceitos e pareceres dependem da avaliação do responsável.
+
+Avaliador: __________________________ Data: ____/____/________
+Orientador: _________________________ Data: ____/____/________
+
+Modelo de apoio. O preenchimento automático não representa aprovação ou assinatura.
+

@@ -1,0 +1,28 @@
+SOLICITAÇÃO DE ENCERRAMENTO DE ESTÁGIO
+
+À coordenação de estágio de {{aluno.instituicao}},
+
+Solicito a análise do encerramento do vínculo de estágio abaixo identificado.
+
+Aluno: {{aluno.nome}} | Matrícula: {{aluno.matricula}}
+Curso: {{aluno.curso}} | E-mail: {{aluno.email}}
+Empresa: {{empresa.nome}} | CNPJ: {{empresa.cnpj}}
+Representante: {{empresa.representante}}
+Contato da empresa: {{empresa.email}}
+Orientador: {{orientador.nome}} | {{orientador.email}}
+Supervisor: {{estagio.supervisor}} | {{estagio.supervisorEmail}}
+
+Período previsto no cadastro: {{estagio.inicio}} a {{estagio.fim}}
+Carga horária semanal prevista: {{estagio.horas}} horas
+
+JUSTIFICATIVA E INFORMAÇÕES COMPLEMENTARES
+{{observacoes}}
+
+Esta requisição não comprova cumprimento de carga horária, conclusão de atividades ou aprovação do encerramento.
+
+Solicitante: ________________________ Data: ____/____/________
+Empresa / supervisor: _______________ Data: ____/____/________
+Coordenação: ________________________ Data: ____/____/________
+
+Modelo de apoio. O preenchimento automático não representa aprovação ou assinatura.
+

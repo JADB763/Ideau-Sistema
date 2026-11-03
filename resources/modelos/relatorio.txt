@@ -1,0 +1,26 @@
+RELATÓRIO DE ESTÁGIO
+
+Aluno: {{aluno.nome}} | Matrícula: {{aluno.matricula}}
+Curso: {{aluno.curso}} | Instituição: {{aluno.instituicao}}
+E-mail: {{aluno.email}}
+
+Empresa: {{empresa.nome}} | CNPJ: {{empresa.cnpj}}
+Orientador: {{orientador.nome}} | {{orientador.email}}
+Supervisor: {{estagio.supervisor}} | {{estagio.supervisorEmail}}
+Período cadastrado: {{estagio.inicio}} a {{estagio.fim}}
+Carga horária semanal prevista: {{estagio.horas}} horas
+
+ATIVIDADES PREVISTAS NO CADASTRO
+{{estagio.atividades}}
+
+RELATO DAS ATIVIDADES REALIZADAS E RESULTADOS
+{{observacoes}}
+
+O período e as atividades acima são os dados de planejamento cadastrados. A realização efetiva deve ser descrita e conferida pelos responsáveis.
+
+Aluno: ______________________________ Data: ____/____/________
+Supervisor: _________________________ Data: ____/____/________
+Orientador: _________________________ Data: ____/____/________
+
+Modelo de apoio. O preenchimento automático não representa aprovação ou assinatura.
+
