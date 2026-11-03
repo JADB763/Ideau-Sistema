@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\StatusAprovacao;
 use App\Enums\TipoSolicitacao;
 use App\Models\Concerns\HasEventos;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -41,6 +42,22 @@ class Solicitacao extends Model
             'tipo_de_solicitacao' => TipoSolicitacao::class,
             'status' => StatusAprovacao::class,
         ];
+    }
+
+    /**
+     * Coordenação vê todas; aluno, as próprias; professor, as dos TCCs e estágios que orienta.
+     */
+    public function scopeVisivelPara(Builder $query, Usuario $usuario): void
+    {
+        if ($usuario->isAluno()) {
+            $query->where('id_aluno', $usuario->id);
+        } elseif ($usuario->isProfessor()) {
+            $query->where(fn (Builder $q) => $q
+                ->whereHas('tcc', fn (Builder $t) => $t->where('id_professor_orientador', $usuario->id))
+                ->orWhereHas('estagio', fn (Builder $e) => $e->where('id_professor_orientador', $usuario->id)));
+        } elseif (! $usuario->isCoordenacao()) {
+            $query->whereRaw('1 = 0');
+        }
     }
 
     public function aluno(): BelongsTo

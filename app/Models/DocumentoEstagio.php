@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\DocumentoStatus;
 use App\Enums\DocumentoTipo;
 use App\Models\Concerns\HasEventos;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -42,6 +43,14 @@ class DocumentoEstagio extends Model
             'status' => DocumentoStatus::class,
             'revisao' => 'integer',
         ];
+    }
+
+    /**
+     * Mesma visibilidade do estágio do documento.
+     */
+    public function scopeVisivelPara(Builder $query, Usuario $usuario): void
+    {
+        $query->whereHas('estagio', fn (Builder $q) => $q->visivelPara($usuario));
     }
 
     public function estagio(): BelongsTo

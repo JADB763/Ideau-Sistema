@@ -38,6 +38,13 @@ class UsuarioFactory extends Factory
         ];
     }
 
+    public function aluno(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'tipo_usuario' => TipoUsuario::Aluno,
+        ]);
+    }
+
     public function professor(): static
     {
         return $this->state(fn (array $attributes) => [

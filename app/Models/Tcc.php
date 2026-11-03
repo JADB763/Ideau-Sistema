@@ -7,6 +7,7 @@ use App\Enums\TccStatus;
 use App\Enums\TipoLog;
 use App\Models\Concerns\HasEventos;
 use Database\Factories\TccFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -46,6 +47,22 @@ class Tcc extends Model
             'aprovado' => StatusAprovacao::class,
             'revisao' => 'integer',
         ];
+    }
+
+    /**
+     * Coordenação vê todos; aluno, os próprios; professor, os que orienta e os das bancas de que participa.
+     */
+    public function scopeVisivelPara(Builder $query, Usuario $usuario): void
+    {
+        if ($usuario->isAluno()) {
+            $query->where('id_aluno', $usuario->id);
+        } elseif ($usuario->isProfessor()) {
+            $query->where(fn (Builder $q) => $q
+                ->where('id_professor_orientador', $usuario->id)
+                ->orWhereHas('defesas.banca.participantes', fn (Builder $p) => $p->where('id_professor', $usuario->id)));
+        } elseif (! $usuario->isCoordenacao()) {
+            $query->whereRaw('1 = 0');
+        }
     }
 
     public function aluno(): BelongsTo

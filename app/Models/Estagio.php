@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\EstagioStatus;
 use App\Models\Concerns\HasEventos;
 use Database\Factories\EstagioFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -46,6 +47,20 @@ class Estagio extends Model
             'status' => EstagioStatus::class,
             'horas_semanais' => 'decimal:1',
         ];
+    }
+
+    /**
+     * Coordenação vê todos; aluno, os próprios; professor, os que orienta.
+     */
+    public function scopeVisivelPara(Builder $query, Usuario $usuario): void
+    {
+        if ($usuario->isAluno()) {
+            $query->where('id_aluno', $usuario->id);
+        } elseif ($usuario->isProfessor()) {
+            $query->where('id_professor_orientador', $usuario->id);
+        } elseif (! $usuario->isCoordenacao()) {
+            $query->whereRaw('1 = 0');
+        }
     }
 
     public function aluno(): BelongsTo
