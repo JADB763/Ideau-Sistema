@@ -1,0 +1,33 @@
+PLANO DE ATIVIDADES DE ESTÁGIO
+
+IDENTIFICAÇÃO
+Aluno: {{aluno.nome}}
+Matrícula: {{aluno.matricula}} | Curso: {{aluno.curso}}
+Instituição: {{aluno.instituicao}}
+E-mail do aluno: {{aluno.email}}
+
+Empresa: {{empresa.nome}} | CNPJ: {{empresa.cnpj}}
+Endereço: {{empresa.endereco}}
+Representante: {{empresa.representante}}
+Contato: {{empresa.email}}
+
+Orientador: {{orientador.nome}} | {{orientador.email}}
+Supervisor: {{estagio.supervisor}} | {{estagio.supervisorEmail}}
+
+PLANEJAMENTO
+Período previsto: {{estagio.inicio}} a {{estagio.fim}}
+Carga horária semanal: {{estagio.horas}} horas
+
+As atividades previstas para o estágio de {{aluno.nome}}, junto à empresa {{empresa.nome}}, são:
+{{estagio.atividades}}
+
+COMPLEMENTOS
+{{observacoes}}
+
+CONFERÊNCIA E ASSINATURAS
+Aluno: ______________________________ Data: ____/____/________
+Orientador: _________________________ Data: ____/____/________
+Empresa / supervisor: _______________ Data: ____/____/________
+
+Modelo de apoio. Conferir as exigências da instituição. O preenchimento automático não representa aprovação ou assinatura.
+
